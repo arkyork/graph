@@ -1,8 +1,8 @@
-from dataclasses import dataclasses,field
+from dataclasses import dataclass,field
 from node import Node
 from edge import Edge
 
-@dataclasses
+@dataclass
 class Graph:
     # 有向 or 無向
     directed: bool = False
@@ -20,7 +20,7 @@ class Graph:
         node = Node(name)
 
         # nodesに含まれていない場合
-        if node in self.nodes:
+        if not node in self.nodes:
             self.nodes.add(node)
             self.adjacency[node] = {}
 
@@ -45,9 +45,9 @@ class Graph:
     # オブジェクトを再生成するため
     def __repr__(self) -> str:
         return f"""Graph(
-        directed={self.directed},
-        nodes={self.nodes},
-        edges={self.edges},
-        adjacency={self.adjacency}
+            directed={self.directed},
+            nodes={self.nodes},
+            edges={self.edges},
+            adjacency={self.adjacency}
         )
         """
